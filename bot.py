@@ -576,15 +576,7 @@ def run_http_server():
     print(f"Starting HTTP server on port {port}")
     httpd.serve_forever()
 
-if __name__ == '__main__':
-    # Existing startup code for Telegram bot
-    updater.start_polling()
-    
-    # Start the HTTP server for deployment compliance
-    run_http_server()
-
-    updater.idle()
-
 # Start the bot
 updater.start_polling()
+run_http_server()
 updater.idle()
