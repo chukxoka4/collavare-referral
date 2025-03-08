@@ -570,7 +570,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         self.wfile.write(b'Service is running!')
 
 def run_http_server():
-    port = int(os.environ.get("PORT", 5000))  # Default to port 5000 or use specified PORT
+    port = int(os.environ.get("PORT", 56000))  # Default to port 5000 or use specified PORT
     server_address = ('', port)
     httpd = HTTPServer(server_address, SimpleHTTPRequestHandler)
     print(f"Starting HTTP server on port {port}")
