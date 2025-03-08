@@ -586,6 +586,5 @@ if __name__ == '__main__':
     updater.idle()
 
 # Start the bot
-updater.start_polling()
-
-updater.idle()
+#updater.start_polling()
+#updater.idle()
