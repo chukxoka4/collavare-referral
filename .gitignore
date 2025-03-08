@@ -43,4 +43,5 @@ collavare-referral-oauth-credentials.json
 token.pickle
 collavare-referral-tool-346f45a3947a.json
 contact_last_row.json
-contacts.py
+token.pickle.base64
+.DS_Store
