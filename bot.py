@@ -561,7 +561,29 @@ def upload_to_drive(file_path, file_name, folder_id, sender_info):
     except HttpError as error:
         print(f"An error occurred while uploading the file: {error}")
 
+from http.server import HTTPServer, BaseHTTPRequestHandler
 
+class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b'Service is running!')
+
+def run_http_server():
+    port = int(os.environ.get("PORT", 5000))  # Default to port 5000 or use specified PORT
+    server_address = ('', port)
+    httpd = HTTPServer(server_address, SimpleHTTPRequestHandler)
+    print(f"Starting HTTP server on port {port}")
+    httpd.serve_forever()
+
+if __name__ == '__main__':
+    # Existing startup code for Telegram bot
+    updater.start_polling()
+    
+    # Start the HTTP server for deployment compliance
+    run_http_server()
+
+    updater.idle()
 
 # Start the bot
 updater.start_polling()
