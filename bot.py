@@ -63,6 +63,23 @@ def save_contact_last_row(contact_last_row):
 
 contact_last_row = load_contact_last_row()
 
+def create_token_pickle():
+    # Get the base64 encoded string from the environment variable
+    token_pickle_base64 = os.getenv('TOKEN_PICKLE_BASE64')
+
+    if token_pickle_base64:
+        # Decode the base64 string
+        token_data = base64.b64decode(token_pickle_base64)
+
+        # Write the decoded data back to a token.pickle file
+        with open('token.pickle', 'wb') as token_file:
+            token_file.write(token_data)
+    else:
+        print("No TOKEN_PICKLE_BASE64 environment variable found.")
+
+# Call this function at application startup
+create_token_pickle()
+
 
 def authenticate_gmail():
     # Gmail API scopes
